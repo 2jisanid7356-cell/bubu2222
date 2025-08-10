@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Anniversary!</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Cormorant+Garamond:wght@300;400;500;600&family=Dancing+Script:wght@400;600;700&family=Great+Vibes&family=Pacifico&family=Crimson+Text:wght@400;600&family=Libre+Baskerville:wght@400;700&family=Cinzel:wght@400;500;600&family=Abril+Fatface&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #0e4b99 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        /* Stars Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, #eee, transparent),
+                radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
+                radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+                radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.6), transparent),
+                radial-gradient(2px 2px at 160px 30px, #fff, transparent);
+            background-repeat: repeat;
+            background-size: 200px 100px;
+            animation: twinkle 4s ease-in-out infinite alternate;
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(1px 1px at 50px 100px, rgba(255,255,255,0.9), transparent),
+                radial-gradient(2px 2px at 100px 50px, rgba(255,255,255,0.7), transparent),
+                radial-gradient(1px 1px at 150px 150px, #fff, transparent),
+                radial-gradient(1px 1px at 200px 100px, rgba(255,255,255,0.8), transparent),
+                radial-gradient(2px 2px at 250px 50px, rgba(255,255,255,0.6), transparent);
+            background-repeat: repeat;
+            background-size: 300px 200px;
+            animation: twinkle 3s ease-in-out infinite alternate-reverse;
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+        /* Entrance Screen */
+        .entrance-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, #1a1a2e 0%, #16213e 25%, #0f3460 50%, #0e4b99 75%, #000000 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            transition: opacity 1s ease-out, visibility 1s ease-out;
+            overflow: hidden;
+        }
+        
+        .entrance-screen::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 107, 157, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(78, 205, 196, 0.08) 0%, transparent 50%);
+            animation: backgroundPulse 6s ease-in-out infinite alternate;
+        }
+        
+        .entrance-screen::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(2px 2px at 10% 20%, rgba(255, 215, 0, 0.8), transparent),
+                radial-gradient(1px 1px at 30% 70%, rgba(255, 255, 255, 0.9), transparent),
+                radial-gradient(2px 2px at 70% 30%, rgba(255, 215, 0, 0.6), transparent),
+                radial-gradient(1px 1px at 90% 80%, rgba(255, 255, 255, 0.7), transparent),
+                radial-gradient(2px 2px at 50% 10%, rgba(255, 215, 0, 0.5), transparent);
+            background-size: 300px 200px, 400px 300px, 350px 250px, 300px 200px, 450px 350px;
+            animation: floatingStars 8s linear infinite;
+        }
+        
+        .entrance-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .entrance-title {
+            font-family: 'Cinzel', serif;
+            font-size: 4.5rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 25%, #ffa500 50%, #ff6b9d 75%, #ffd700 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+            margin-bottom: 40px;
+            animation: fadeInScale 2s ease-out, titleGlow 3s ease-in-out infinite alternate;
+            text-align: center;
+            letter-spacing: 3px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .entrance-title::before {
+            content: '✨';
+            position: absolute;
+            top: -30px;
+            left: -50px;
+            font-size: 2.5rem;
+            animation: sparkleFloat 4s ease-in-out infinite;
+            z-index: -1;
+        }
+        
+        .entrance-title::after {
+            content: '✨';
+            position: absolute;
+            top: -20px;
+            right: -50px;
+            font-size: 2rem;
+            animation: sparkleFloat 4s ease-in-out infinite reverse;
+            z-index: -1;
+        }
+        
+        .entrance-subtitle {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.8rem;
+            font-weight: 400;
+            color: rgba(244, 228, 188, 0.95);
+            margin-bottom: 60px;
+            animation: fadeInUp 2s ease-out 0.5s both, subtitleFloat 4s ease-in-out infinite;
+            text-align: center;
+            letter-spacing: 1.5px;
+            line-height: 1.6;
+            position: relative;
+            z-index: 10;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .entrance-subtitle::before {
+            content: '💕';
+            position: absolute;
+            left: -40px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+            animation: heartPulse 2s ease-in-out infinite;
+        }
+        
+        .entrance-subtitle::after {
+            content: '💕';
+            position: absolute;
+            right: -40px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+            animation: heartPulse 2s ease-in-out infinite 1s;
+        }
+        
+        .enter-button {
+            padding: 25px 60px;
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 25%, #ffa500 50%, #ffd700 100%);
+            color: #1a1a2e;
+            border: 3px solid rgba(255, 255, 255, 0.2);
+            border-radius: 60px;
+            font-family: 'Cinzel', serif;
+            font-size: 1.4rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 
+                0 20px 40px rgba(255, 215, 0, 0.4),
+                inset 0 2px 0 rgba(255, 255, 255, 0.3),
+                0 0 30px rgba(255, 215, 0, 0.2);
+            animation: buttonPulse 3s ease-in-out infinite;
+            position: relative;
+            overflow: hidden;
+            z-index: 10;
+            text-transform: uppercase;
+        }
+        
+        .enter-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.8s ease;
+        }
+        
+        .enter-button::after {
+            content: '✨';
+            position: absolute;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            font-size: 1.2rem;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .enter-button:hover::before {
+            left: 100%;
+        }
+        
+        .enter-button:hover::after {
+            opacity: 1;
+            right: 15px;
+        }
+        
+        .enter-button:hover {
+            transform: translateY(-8px) scale(1.08);
+            box-shadow: 
+                0 25px 50px rgba(255, 215, 0, 0.6),
+                inset 0 2px 0 rgba(255, 255, 255, 0.4),
+                0 0 40px rgba(255, 215, 0, 0.4);
+            background: linear-gradient(135deg, #ffed4e 0%, #ffd700 25%, #ffa500 50%, #ffed4e 100%);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+        
+        /* Main Content */
+        .main-content {
+            opacity: 0;
+            transition: opacity 1s ease-in;
+        }
+        
+        .main-content.visible {
+            opacity: 1;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            animation: fadeInDown 1s ease-out;
+        }
+        
+        .main-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 6.2rem;
+            background: linear-gradient(135deg, #ffd700, #ffed4e, #ffa500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+            margin-bottom: 10px;
+            font-weight: 400;
+            letter-spacing: 2px;
+            position: relative;
+            animation: sparkleTitle 3s ease-in-out infinite, floatTitle 4s ease-in-out infinite;
+        }
+        
+        .main-title::before {
+            content: '✨';
+            position: absolute;
+            top: -20px;
+            left: 10%;
+            font-size: 2rem;
+            animation: sparkle1 2s ease-in-out infinite;
+        }
+        
+        .main-title::after {
+            content: '✨';
+            position: absolute;
+            top: -10px;
+            right: 15%;
+            font-size: 1.5rem;
+            animation: sparkle2 2.5s ease-in-out infinite;
+        }
+        
+        .sparkle-extra {
+            position: absolute;
+            font-size: 1.8rem;
+            animation: sparkle3 3s ease-in-out infinite;
+        }
+        
+        .sparkle-1 {
+            top: 20px;
+            left: 5%;
+            animation-delay: 0.5s;
+        }
+        
+        .sparkle-2 {
+            bottom: 10px;
+            right: 10%;
+            animation-delay: 1s;
+        }
+        
+        .sparkle-3 {
+            top: 50%;
+            left: 2%;
+            animation-delay: 1.5s;
+        }
+        
+        .sparkle-4 {
+            top: 30%;
+            right: 5%;
+            animation-delay: 2s;
+        }
+        
+        .subtitle {
+            font-family: 'Crimson Text', serif;
+            font-size: 1.5rem;
+            color: #f4e4bc;
+            font-weight: 400;
+            letter-spacing: 1.5px;
+        }
+        
+        .anniversary-card {
+            background: linear-gradient(135deg, rgba(26, 26, 46, 0.8), rgba(22, 33, 62, 0.7), rgba(15, 52, 96, 0.6));
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 25px;
+            padding: 50px;
+            margin: 30px 0;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.1);
+            animation: fadeInUp 1s ease-out 0.3s both;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .anniversary-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #ffd700, #ffed4e, #ffa500, #ffd700);
+            border-radius: 25px;
+            z-index: -1;
+            animation: borderGlow 3s linear infinite;
+        }
+        
+        .anniversary-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(26, 26, 46, 0.95), rgba(22, 33, 62, 0.9), rgba(15, 52, 96, 0.85));
+            border-radius: 23px;
+            z-index: -1;
+        }
+        
+        .card-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .anniversary-message {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.4rem;
+            line-height: 2;
+            color: #f4e4bc;
+            text-align: center;
+            margin-bottom: 40px;
+            font-weight: 400;
+            letter-spacing: 0.8px;
+        }
+        
+        .highlight {
+            color: #ffd700;
+            font-weight: 600;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        
+
+        
+        .hearts-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        
+        .heart {
+            font-size: 2.5rem;
+            color: #ffd700;
+            animation: heartbeat 2s infinite;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
+        }
+        
+        .heart:hover {
+            transform: scale(1.3);
+        }
+        
+        .heart:nth-child(2) {
+            animation-delay: 0.3s;
+        }
+        
+        .heart:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+        
+        .wishes-section {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 237, 78, 0.05));
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 30px 0;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+        
+        .wishes-title {
+            font-family: 'Cinzel', serif;
+            font-size: 3.2rem;
+            color: #ffd700;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: 500;
+            letter-spacing: 2px;
+        }
+        
+        .wish-item {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 237, 78, 0.15));
+            border-left: 4px solid #ffd700;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            transform: translateX(-20px);
+            opacity: 0;
+            animation: slideInLeft 0.8s ease-out forwards;
+            backdrop-filter: blur(5px);
+        }
+        
+        .wish-item:nth-child(2) { animation-delay: 0.2s; }
+        .wish-item:nth-child(3) { animation-delay: 0.4s; }
+        .wish-item:nth-child(4) { animation-delay: 0.6s; }
+        .wish-item:nth-child(5) { animation-delay: 0.8s; }
+        .wish-item:nth-child(6) { animation-delay: 1.0s; }
+        
+        .wish-text {
+            font-family: 'Crimson Text', serif;
+            font-size: 1.3rem;
+            color: #f4e4bc;
+            font-weight: 400;
+            letter-spacing: 0.8px;
+            line-height: 1.6;
+        }
+        
+        .button-group {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 50px 0;
+            flex-wrap: wrap;
+        }
+        
+        .celebration-button, .send-love-button, .dulabhai-button {
+            padding: 20px 40px;
+            border: none;
+            border-radius: 50px;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+        
+        .celebration-button {
+            background: linear-gradient(135deg, #ffd700, #ffed4e);
+            color: #2c1810;
+            box-shadow: 0 15px 30px rgba(255, 215, 0, 0.3);
+        }
+        
+        .celebration-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(255, 215, 0, 0.4);
+        }
+        
+        .send-love-button {
+            background: linear-gradient(135deg, #ff6b9d, #ff8fab);
+            color: white;
+            box-shadow: 0 15px 30px rgba(255, 107, 157, 0.3);
+            animation-delay: 0.5s;
+        }
+        
+        .send-love-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(255, 107, 157, 0.4);
+            background: linear-gradient(135deg, #ff8fab, #ff6b9d);
+        }
+        
+        .dulabhai-button {
+            background: linear-gradient(135deg, #4ecdc4, #44a08d);
+            color: white;
+            box-shadow: 0 15px 30px rgba(78, 205, 196, 0.3);
+            animation-delay: 1s;
+        }
+        
+        .dulabhai-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(78, 205, 196, 0.4);
+            background: linear-gradient(135deg, #44a08d, #4ecdc4);
+        }
+        
+        /* Dulabhai Popup Styles */
+        .dulabhai-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .dulabhai-popup.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .dulabhai-content {
+            background: linear-gradient(135deg, #4ecdc4, #44a08d);
+            border-radius: 25px;
+            padding: 50px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+        }
+        
+        .dulabhai-popup.show .dulabhai-content {
+            transform: scale(1);
+        }
+        
+        .close-popup {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .close-popup:hover {
+            transform: scale(1.2);
+        }
+        
+        .dulabhai-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: white;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            animation: bounce 1s ease-out;
+        }
+        
+        .dulabhai-emoji {
+            font-size: 4rem;
+            animation: spin 2s ease-in-out infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-20px);
+            }
+            60% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+        }
+        
+        .floating-heart {
+            position: absolute;
+            font-size: 1.5rem;
+            color: #ffd700;
+            animation: floatUp 4s linear infinite;
+            opacity: 0;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 30px;
+            color: #f4e4bc;
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1.1rem;
+        }
+        
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideInLeft {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        @keyframes borderGlow {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        
+        @keyframes floatUp {
+            0% {
+                opacity: 1;
+                transform: translateY(100vh) rotate(0deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-100px) rotate(360deg);
+            }
+        }
+        
+        @keyframes twinkle {
+            0% { opacity: 0.3; }
+            100% { opacity: 1; }
+        }
+        
+        @keyframes floatTitle {
+            0%, 100% { 
+                transform: translateY(0px);
+            }
+            50% { 
+                transform: translateY(-15px);
+            }
+        }
+        
+        @keyframes sparkleTitle {
+            0%, 100% { 
+                filter: brightness(1) drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
+            }
+            50% { 
+                filter: brightness(1.2) drop-shadow(0 0 20px rgba(255, 215, 0, 0.8));
+            }
+        }
+        
+        @keyframes sparkle1 {
+            0%, 100% { 
+                opacity: 0.3; 
+                transform: scale(0.8) rotate(0deg);
+            }
+            50% { 
+                opacity: 1; 
+                transform: scale(1.2) rotate(180deg);
+            }
+        }
+        
+        @keyframes sparkle2 {
+            0%, 100% { 
+                opacity: 0.4; 
+                transform: scale(0.9) rotate(0deg);
+            }
+            50% { 
+                opacity: 1; 
+                transform: scale(1.1) rotate(-180deg);
+            }
+        }
+        
+        @keyframes sparkle3 {
+            0%, 100% { 
+                opacity: 0.2; 
+                transform: scale(0.7) rotate(0deg);
+            }
+            50% { 
+                opacity: 0.9; 
+                transform: scale(1.3) rotate(360deg);
+            }
+        }
+        
+        @keyframes backgroundPulse {
+            0% { opacity: 0.8; }
+            100% { opacity: 1; }
+        }
+        
+        @keyframes floatingStars {
+            0% { transform: translateX(0) translateY(0); }
+            25% { transform: translateX(-10px) translateY(-5px); }
+            50% { transform: translateX(5px) translateY(-10px); }
+            75% { transform: translateX(-5px) translateY(5px); }
+            100% { transform: translateX(0) translateY(0); }
+        }
+        
+        @keyframes titleGlow {
+            0% { 
+                filter: brightness(1) drop-shadow(0 0 20px rgba(255, 215, 0, 0.3));
+            }
+            100% { 
+                filter: brightness(1.2) drop-shadow(0 0 40px rgba(255, 215, 0, 0.6));
+            }
+        }
+        
+        @keyframes sparkleFloat {
+            0%, 100% { 
+                transform: translateY(0px) rotate(0deg);
+                opacity: 0.6;
+            }
+            50% { 
+                transform: translateY(-20px) rotate(180deg);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes subtitleFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+        
+        @keyframes heartPulse {
+            0%, 100% { 
+                transform: translateY(-50%) scale(1);
+                opacity: 0.7;
+            }
+            50% { 
+                transform: translateY(-50%) scale(1.2);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes buttonPulse {
+            0%, 100% { 
+                transform: scale(1);
+                box-shadow: 
+                    0 20px 40px rgba(255, 215, 0, 0.4),
+                    inset 0 2px 0 rgba(255, 255, 255, 0.3),
+                    0 0 30px rgba(255, 215, 0, 0.2);
+            }
+            50% { 
+                transform: scale(1.02);
+                box-shadow: 
+                    0 25px 50px rgba(255, 215, 0, 0.5),
+                    inset 0 2px 0 rgba(255, 255, 255, 0.4),
+                    0 0 40px rgba(255, 215, 0, 0.3);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .entrance-title {
+                font-size: 2.5rem;
+            }
+            
+            .main-title {
+                font-size: 3.5rem;
+            }
+            
+            .anniversary-card, .wishes-section {
+                padding: 25px;
+                margin: 20px 0;
+            }
+            
+            .hearts-container {
+                gap: 15px;
+            }
+            
+            .heart {
+                font-size: 2rem;
+            }
+            
+
+            
+            .button-group {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+            
+            .celebration-button, .send-love-button, .dulabhai-button {
+                width: 80%;
+                max-width: 300px;
+                padding: 15px 30px;
+                font-size: 1.1rem;
+            }
+            
+            .dulabhai-content {
+                padding: 30px;
+                margin: 20px;
+            }
+            
+            .dulabhai-text {
+                font-size: 2rem;
+            }
+            
+            .dulabhai-emoji {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Entrance Screen -->
+    <div class="entrance-screen" id="entranceScreen">
+        <h1 class="entrance-title">A Special Anniversary</h1>
+        <p class="entrance-subtitle">Celebrating Love & Beautiful Memories</p>
+        <button class="enter-button" onclick="enterSite()">Click Here to Enter</button>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content" id="mainContent">
+        <div class="container">
+            <header class="header">
+                <h1 class="main-title">
+                    Happy Anniversary!
+                    <span class="sparkle-extra sparkle-1">✨</span>
+                    <span class="sparkle-extra sparkle-2">✨</span>
+                    <span class="sparkle-extra sparkle-3">✨</span>
+                    <span class="sparkle-extra sparkle-4">✨</span>
+                </h1>
+                <p class="subtitle">Celebrating Dulabhai & Bubu's 2nd Year Anniversary</p>
+            </header>
+            
+            <div class="anniversary-card">
+                <div class="card-content">
+                    <div class="anniversary-message">
+                        Dear Dulabhai & Bubu,<br><br>
+                        On this <span class="highlight">special day</span>, I want to celebrate the beautiful journey you and your partner have shared together. Your love story continues to inspire everyone around you, and watching your bond grow stronger each year fills our hearts with joy.<br><br>
+                        May your marriage be blessed with <span class="highlight">endless happiness</span>, <span class="highlight">unconditional love</span>, and <span class="highlight">countless beautiful moments</span> to cherish forever.
+                    </div>
+                    
+                    <div class="hearts-container">
+                        <span class="heart">💖</span>
+                        <span class="heart">💕</span>
+                        <span class="heart">💖</span>
+                    </div>
+                </div>
+            </div>
+            
+
+            
+            <div class="wishes-section">
+                <h2 class="wishes-title">My Wishes for You</h2>
+                
+                <div class="wish-item">
+                    <div class="wish-text">🌟 May your love continue to grow stronger with each passing year</div>
+                </div>
+                
+                <div class="wish-item">
+                    <div class="wish-text">🎉 May you always find reasons to celebrate together</div>
+                </div>
+                
+                <div class="wish-item">
+                    <div class="wish-text">💫 May your home be filled with laughter, joy, and endless love</div>
+                </div>
+                
+                <div class="wish-item">
+                    <div class="wish-text">🌈 May you create many more beautiful memories in the years to come</div>
+                </div>
+                
+                <div class="wish-item">
+                    <div class="wish-text">💝 May your partnership be a source of strength and happiness always</div>
+                </div>
+            </div>
+            
+            <div class="button-group">
+                <button class="celebration-button" onclick="celebrate()">🎊 Celebrate! 🎊</button>
+                <button class="send-love-button" onclick="sendLove()">💕 SEND LOVE 💕</button>
+                <button class="dulabhai-button" onclick="showDulabhaiMessage()">👨‍💼 FOR DULABHAI 👨‍💼</button>
+            </div>
+            
+            <!-- Dulabhai Message Popup -->
+            <div class="dulabhai-popup" id="dulabhaiPopup">
+                <div class="dulabhai-content">
+                    <button class="close-popup" onclick="closeDulabhaiMessage()">×</button>
+                    <div class="dulabhai-text">Treat chaiii</div>
+                    <div class="dulabhai-emoji">🍵✨</div>
+                </div>
+            </div>
+            
+            <footer class="footer">
+                With all my love and best wishes on your anniversary!
+            </footer>
+        </div>
+    </div>
+    
+    <div class="floating-hearts" id="floatingHearts"></div>
+    
+    <script>
+        function enterSite() {
+            const entranceScreen = document.getElementById('entranceScreen');
+            const mainContent = document.getElementById('mainContent');
+            
+            entranceScreen.classList.add('hidden');
+            
+            setTimeout(() => {
+                mainContent.classList.add('visible');
+            }, 500);
+        }
+        
+        function celebrate() {
+            const heartsContainer = document.getElementById('floatingHearts');
+            const heartSymbols = ['💖', '💕', '💗', '💝', '💘', '💞', '🌟', '✨'];
+            
+            for (let i = 0; i < 25; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.className = 'floating-heart';
+                    heart.textContent = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+                    heart.style.left = Math.random() * 100 + '%';
+                    heart.style.animationDelay = Math.random() * 2 + 's';
+                    heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
+                    heart.style.color = Math.random() > 0.5 ? '#ffd700' : '#ffed4e';
+                    
+                    heartsContainer.appendChild(heart);
+                    
+                    setTimeout(() => {
+                        heart.remove();
+                    }, 6000);
+                }, i * 150);
+            }
+            
+            const button = document.querySelector('.celebration-button');
+            const originalText = button.textContent;
+            button.textContent = '🎉 Celebrating Your Love! 🎉';
+            button.style.background = 'linear-gradient(135deg, #32cd32, #228b22)';
+            
+            setTimeout(() => {
+                button.textContent = originalText;
+                button.style.background = 'linear-gradient(135deg, #ffd700, #ffed4e)';
+            }, 3000);
+        }
+        
+        function sendLove() {
+            const heartsContainer = document.getElementById('floatingHearts');
+            const loveSymbols = ['💕', '💖', '💗', '💝', '💘', '💞', '❤️', '💓', '💟', '♥️'];
+            
+            // Create a burst of hearts
+            for (let i = 0; i < 40; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.className = 'floating-heart';
+                    heart.textContent = loveSymbols[Math.floor(Math.random() * loveSymbols.length)];
+                    heart.style.left = Math.random() * 100 + '%';
+                    heart.style.animationDelay = Math.random() * 1 + 's';
+                    heart.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                    heart.style.color = '#ff6b9d';
+                    heart.style.fontSize = (Math.random() * 1 + 1.5) + 'rem';
+                    
+                    heartsContainer.appendChild(heart);
+                    
+                    setTimeout(() => {
+                        heart.remove();
+                    }, 4000);
+                }, i * 100);
+            }
+            
+            // Button effect
+            const button = document.querySelector('.send-love-button');
+            const originalText = button.textContent;
+            button.textContent = '💕 Love Sent! 💕';
+            button.style.background = 'linear-gradient(135deg, #ff1744, #e91e63)';
+            button.style.transform = 'scale(1.1)';
+            
+            setTimeout(() => {
+                button.textContent = originalText;
+                button.style.background = 'linear-gradient(135deg, #ff6b9d, #ff8fab)';
+                button.style.transform = 'scale(1)';
+            }, 2500);
+        }
+        
+        function showDulabhaiMessage() {
+            const popup = document.getElementById('dulabhaiPopup');
+            popup.classList.add('show');
+            
+            // Add some fun effects
+            setTimeout(() => {
+                const dulabhaiText = document.querySelector('.dulabhai-text');
+                dulabhaiText.style.animation = 'bounce 1s ease-out';
+            }, 300);
+        }
+        
+        function closeDulabhaiMessage() {
+            const popup = document.getElementById('dulabhaiPopup');
+            popup.classList.remove('show');
+        }
+        
+        // Add click effect to hearts
+        document.querySelectorAll('.heart').forEach(heart => {
+            heart.addEventListener('click', function() {
+                this.style.animation = 'none';
+                setTimeout(() => {
+                    this.style.animation = 'heartbeat 2s infinite';
+                }, 10);
+                
+                const floatingHeart = document.createElement('div');
+                floatingHeart.textContent = '💕';
+                floatingHeart.style.position = 'absolute';
+                floatingHeart.style.fontSize = '1.5rem';
+                floatingHeart.style.color = '#ffd700';
+                floatingHeart.style.pointerEvents = 'none';
+                floatingHeart.style.animation = 'floatUp 2s ease-out forwards';
+                
+                const rect = this.getBoundingClientRect();
+                floatingHeart.style.left = rect.left + 'px';
+                floatingHeart.style.top = rect.top + 'px';
+                
+                document.body.appendChild(floatingHeart);
+                
+                setTimeout(() => {
+                    floatingHeart.remove();
+                }, 2000);
+            });
+        });
+        
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.anniversary-card, .wishes-section').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96d24fdc50274ea0',t:'MTc1NDg1ODQ2NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
